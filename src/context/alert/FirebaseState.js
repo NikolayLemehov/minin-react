@@ -21,8 +21,12 @@ export const FirebaseState = ({children}) => {
     const note = {
       title, date: new Date().toJSON()
     }
-    const res = await axios.post(`${url}/notes.json`, note)
-    console.log('addNote', res.data)
+    try {
+      const res = await axios.post(`${url}/notes.json`, note)
+      console.log('addNote', res.data)
+    } catch (e) {
+      throw new Error(e.message)
+    }
   }
   const removeNote = async id => {
     await axios.delete(`${url}/notes/${id}.json`)
