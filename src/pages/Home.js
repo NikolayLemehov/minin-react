@@ -8,7 +8,7 @@ export const Home = () => {
   const {loading, notes, fetchNotes, removeNote} = useContext(FirebaseContext)
   useEffect(() => {
     fetchNotes()
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
   return (
       <Fragment>
         <Form/>
